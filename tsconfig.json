@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "esnext",                  // Updated from ES2017 to esnext to support import.meta
+    "lib": ["DOM", "ES2020", "DOM.Iterable"], // Added ES2020 for newer JS features
+    "module": "esnext",                  // Added module esnext for import.meta support
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx"
+  }
+}

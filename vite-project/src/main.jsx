@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { Contact } from './App.jsx'
+import { Contact } from './App.js'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
