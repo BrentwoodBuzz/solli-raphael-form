@@ -11,6 +11,12 @@ export const Contact = () => {
     message: "",
   });
 
+  const emailInit = () => {
+    emailjs.init({
+      publicKey: process.env.VITE_PUBLIC_KEY,
+    });
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
