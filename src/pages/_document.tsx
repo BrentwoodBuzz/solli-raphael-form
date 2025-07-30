@@ -1,9 +1,15 @@
-// src/pages/_app.tsx
+// src/pages/_document.tsx
 
-import '../index.css'; // Adjust the path if your CSS is elsewhere
-import { Contact } from '../components/Contact';
+import { Html, Head, Main, NextScript } from 'next/document';
 
-
-export default function MyApp() {
-  return <Contact/> ;
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
 }
