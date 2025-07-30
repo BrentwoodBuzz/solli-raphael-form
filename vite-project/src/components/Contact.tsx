@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { UploadButton } from "./utils/uploadthing";
-import type { OurFileRouter } from "./server/uploadthing/core";
+import { UploadButton } from "../utils/uploadthing";
+import type { OurFileRouter } from "../server/uploadthing/core";
 import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
