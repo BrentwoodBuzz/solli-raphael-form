@@ -1,21 +1,35 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  plugins: [
+    'react',
+    'react-hooks',
+    '@typescript-eslint',
+    'jsx-a11y',
+    'next',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:next/recommended',
+    'next/core-web-vitals',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
   rules: {
-    'react/jsx-no-target-blank': 'off',
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    // your custom rules here
   },
-}
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+};

@@ -1,11 +1,19 @@
 {
   "compilerOptions": {
-    "target": "esnext",                  // Updated from ES2017 to esnext to support import.meta
-    "lib": ["DOM", "ES2020", "DOM.Iterable"], // Added ES2020 for newer JS features
-    "module": "esnext",                  // Added module esnext for import.meta support
-    "moduleResolution": "node",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx"
-  }
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "preserve"
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
