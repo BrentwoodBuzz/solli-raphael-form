@@ -1,11 +1,12 @@
-const repo = 'solli-raphael-form';
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const repo = 'solli-raphael-form'; // change to your repo name
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: `/${repo}`,
-  assetPrefix: `/${repo}/`,
+  basePath: isGitHubPages ? `/${repo}` : '',
+  assetPrefix: isGitHubPages ? `/${repo}/` : '',
   trailingSlash: true,
 };
 
-module.exports = nextConfig;
+export default nextConfig;
