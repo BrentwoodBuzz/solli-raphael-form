@@ -66,18 +66,17 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build static site
-        env :
+        env:
           GITHUB_PAGES: true
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      - name: Move export output to dist
-        run: mv out dist
+      # ❌ Removed the `mv out dist` step — it's unnecessary
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./out  # ✅ Use the default `out/` from `output: 'export'`
 
   deploy:
     environment:
