@@ -1,6 +1,5 @@
-// next.config.mjs
-const isGitHubPages = process.env.NODE_ENV === 'production';
-const repo = 'solli-raphael-form'; // 🔁 change to your actual repo name
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const repo = 'solli-raphael-form';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
