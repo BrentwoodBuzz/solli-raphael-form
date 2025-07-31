@@ -72,6 +72,8 @@ jobs:
           ${{ steps.detect-package-manager.outputs.runner }} next build
 
       # ❌ Removed the `mv out dist` step — it's unnecessary
+      - name: List out/ contents
+        run: ls -R out
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
