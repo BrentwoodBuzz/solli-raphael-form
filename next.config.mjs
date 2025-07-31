@@ -1,11 +1,13 @@
-// next.config.js
+// next.config.mjs
 const isGitHubPages = process.env.NODE_ENV === 'production';
-const repo = 'solli-raphael-form'; // 🔁 replace this with your actual repo name
+const repo = 'your-repo-name'; // 🔁 change to your actual repo name
 
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   output: 'export',
   basePath: isGitHubPages ? `/${repo}` : '',
   assetPrefix: isGitHubPages ? `/${repo}/` : '',
   trailingSlash: true,
 };
+
+export default nextConfig;
