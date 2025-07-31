@@ -1,5 +1,5 @@
 // src/pages/_app.tsx
-
+import 'tailwindcss/tailwind.css';
 import '../index.css'; // Import your global CSS here
 import type { AppProps } from 'next/app';
 
