@@ -1,8 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  basePath: '/solli-raphael-form',
-  assetPrefix: '/solli-raphael-form/',
-}
+const repo = 'solli-raphael-form'; // 🔁 Replace with your GitHub repo name
 
-export default nextConfig;
+module.exports = {
+  output: 'export', // for static export
+  basePath: isGitHubPages ? `/${repo}` : '',
+  assetPrefix: isGitHubPages ? `/${repo}/` : '',
+  trailingSlash: true,
+};
