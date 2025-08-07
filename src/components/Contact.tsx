@@ -109,8 +109,7 @@ export const Contact = () => {
             disabled={
               formData.name.trim() === "" ||
               formData.email.trim() === "" ||
-              formData.message.trim() === "" ||
-              !fileUrl // or !imageUrl
+              formData.message.trim() === ""
             }
             className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium hover:-translate-y-0.5 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >

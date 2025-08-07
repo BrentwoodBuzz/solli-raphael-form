@@ -1,12 +1,16 @@
-import { createUploadthing, type FileRouter } from "uploadthing/next";
+// core.ts (or similar)
+import { createUploadthing, type FileRouter } from "uploadthing";
 
-const f = createUploadthing();
+const uploadthing = createUploadthing();
 
 export const ourFileRouter = {
-  docUploader: f({ 
-    "application/pdf": { maxFileSize: "4MB" }, 
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": { maxFileSize: "4MB" }
-  }).onUploadComplete(() => {}),
-} satisfies FileRouter;
+  docUploader: uploadthing
+    .fileTypes(["pdf", "docx"])  // <-- Only accept PDF and DOCX files here
+    .maxSize("10MB")             // Optional: set max file size
+    .onUploadComplete(({ file }) => {
+      console.log("File uploaded:", file);
+      // You can store file info or trigger additional actions here
+    }),
+};
 
 export type OurFileRouter = typeof ourFileRouter;
