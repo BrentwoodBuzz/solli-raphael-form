@@ -15,7 +15,7 @@ export const Contact = () => {
     emailjs.init({
       publicKey: process.env.VITE_PUBLIC_KEY,
     });
-  }
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,12 +27,11 @@ export const Contact = () => {
       uploaded_file_url: imageUrl || "No file uploaded",
     };
 
-    emailjs
-      .send(
-        import.meta.env.VITE_SERVICE_ID!,
-import.meta.env.VITE_TEMPLATE_ID!,
-import.meta.env.VITE_PUBLIC_KEY!
-
+    emailjs.send(
+        process.env.NEXT_PUBLIC_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID!,
+        templateParams,
+        process.env.NEXT_PUBLIC_PUBLIC_KEY!
       )
       .then(() => {
         alert("Submitted successfully!");
@@ -46,7 +45,10 @@ import.meta.env.VITE_PUBLIC_KEY!
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center py-20">
+    <section
+      id="contact"
+      className="min-h-screen flex items-center justify-center py-20"
+    >
       <div className="px-4 w-160">
         <h2 className="text-6xl font-bold mb-10 bg-gradient-to-r from-green-400 to-blue-200 bg-clip-text text-transparent">
           Submit your response
@@ -68,7 +70,9 @@ import.meta.env.VITE_PUBLIC_KEY!
             required
             placeholder="Your email                                                                        E.g. johndoe@gmail.com"
             className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white"
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
           />
           <textarea
             name="message"
@@ -76,7 +80,9 @@ import.meta.env.VITE_PUBLIC_KEY!
             required
             placeholder="Lorem ipsum ..."
             className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white"
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, message: e.target.value })
+            }
           />
 
           {imageUrl && (
