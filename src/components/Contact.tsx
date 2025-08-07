@@ -27,9 +27,8 @@ export const Contact = () => {
       uploaded_file_url: fileUrl || null,
     };
 
-    
-
-    emailjs.send(
+    emailjs
+      .send(
         process.env.NEXT_PUBLIC_SERVICE_ID!,
         process.env.NEXT_PUBLIC_TEMPLATE_ID!,
         templateParams,
@@ -101,13 +100,19 @@ export const Contact = () => {
               if (res && res[0]?.url) setFileUrl(res[0].url);
             }}
             onUploadError={(error) => {
-              console.error("upload failed:", error); 
+              console.error("upload failed:", error);
             }}
           />
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium hover:-translate-y-0.5 transition"
+            disabled={
+              formData.name.trim() === "" ||
+              formData.email.trim() === "" ||
+              formData.message.trim() === "" ||
+              !fileUrl // or !imageUrl
+            }
+            className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium hover:-translate-y-0.5 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Send Away
           </button>
