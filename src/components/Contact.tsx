@@ -4,7 +4,7 @@ import type { OurFileRouter } from "../server/uploadthing/core";
 import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,8 +24,10 @@ export const Contact = () => {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
-      uploaded_file_url: imageUrl || "No file uploaded",
+      uploaded_file_url: fileUrl || null,
     };
+
+    
 
     emailjs.send(
         process.env.NEXT_PUBLIC_SERVICE_ID!,
@@ -36,7 +38,7 @@ export const Contact = () => {
       .then(() => {
         alert("Submitted successfully!");
         setFormData({ name: "", email: "", message: "" });
-        setImageUrl(null);
+        setFileUrl(null);
       })
       .catch((error) => {
         console.error("Email sending error:", error);
@@ -85,21 +87,21 @@ export const Contact = () => {
             }
           />
 
-          {imageUrl && (
+          {fileUrl && (
             <img
-              src={imageUrl}
+              src={fileUrl}
               alt="image preview"
               className="w-full mb-4 rounded-md max-h-48 object-cover"
             />
           )}
 
-          <UploadButton<OurFileRouter, "imageUploader">
-            endpoint="imageUploader"
+          <UploadButton<OurFileRouter, "docUploader">
+            endpoint="docUploader"
             onClientUploadComplete={(res) => {
-              if (res && res[0]?.url) setImageUrl(res[0].url);
+              if (res && res[0]?.url) setFileUrl(res[0].url);
             }}
             onUploadError={(error) => {
-              console.error("upload failed:", error);
+              console.error("upload failed:", error); 
             }}
           />
 
